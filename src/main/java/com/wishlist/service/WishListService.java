@@ -1,16 +1,22 @@
 package com.wishlist.service;
 
+import com.wishlist.exception.NoContentException;
+import com.wishlist.exception.ProductAlreadyExistsException;
 import com.wishlist.exception.ProductNotFoundException;
 import com.wishlist.exception.ProductLimitExceededException;
+import com.wishlist.model.NewProduct;
+import com.wishlist.model.Product;
 import com.wishlist.model.Wishlist;
 import com.wishlist.model.entity.WishlistEntity;
 import com.wishlist.repository.WishlistRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,63 +27,108 @@ public class WishlistService {
     @Autowired
     private WishlistRepository repository;
 
-    public Wishlist addProduct(Wishlist wishlist) {
+    public NewProduct addProduct(NewProduct newProduct) {
 
+        WishlistEntity entity = repository.findByCustomerId(newProduct.getCustomerId());
 
-        long totalProducts = repository.count();
+        if (ObjectUtils.isEmpty(entity)) {
+            entity = new WishlistEntity();
+            entity.setCustomerId(newProduct.getCustomerId());
+            entity.setProducts(Collections.singletonList(newProduct.getProduct()));
 
+        } else {
+            List<Product> products = entity.getProducts();
+
+            if (!CollectionUtils.isEmpty(products)) {
+
+                validateLimitExceeded(products);
+
+                validateAlreadyExists(newProduct, products);
+
+                entity.getProducts().add(newProduct.getProduct());
+
+            }
+        }
+
+        repository.save(entity);
+
+        return newProduct;
+
+    }
+
+    private static void validateAlreadyExists(NewProduct newProduct, List<Product> products) {
+        List<Product> productList = products.stream().filter(p -> p.getProductId().equals(newProduct.getProduct().getProductId())).toList();
+
+        if (!CollectionUtils.isEmpty(productList)) {
+            throw new ProductAlreadyExistsException("Product with ID " + productList.get(0).getProductId() + " already exists.");
+        }
+    }
+
+    private static void validateLimitExceeded(List<Product> products) {
+        int totalProducts = products.size();
 
         if (totalProducts >= 20) {
             throw new ProductLimitExceededException("The maximum product limit has been exceeded.");
         }
-
-
-        WishlistEntity entity = repository.findByCustomerIdAndProductId(wishlist.getCustomerId(), wishlist.getProductId());
-
-        if (ObjectUtils.isEmpty(entity)) {
-            entity = new WishlistEntity();
-            BeanUtils.copyProperties(wishlist, entity);
-            repository.save(entity);
-            wishlist.setId(entity.getId());
-        } else {
-            throw new ProductLimitExceededException("Product with ID " + wishlist.getProductId() + " already exists.");
-        }
-
-        return wishlist;
-
     }
 
-    public void deleteProduct(String id) {
-        repository.deleteById(id);
+    public void deleteProduct(Long customerId, Long productId ) {
+        WishlistEntity entity = repository.findByCustomerId(customerId);
+
+        entity.getProducts().removeIf(product -> product.getProductId().equals(productId));
+
+        repository.save(entity);
     }
 
-    public List<Wishlist> findAllProductsByCostumerId(Long customerId) {
+    public Wishlist findAllProductsByCostumerId(Long customerId) {
+
+        WishlistEntity entities = repository.findByCustomerId(customerId);
 
 
-        List<WishlistEntity> entities = repository.findByCustomerId(customerId);
-
-        if (entities.isEmpty()) {
+        if (ObjectUtils.isEmpty(entities)) {
             throw new ProductNotFoundException("Products not found with CustomerId: " + customerId);
         }
 
-        List<Wishlist> products = new ArrayList<>();
+        if (entities.getProducts().isEmpty()) {
+            throw new NoContentException();
+        }
 
-        entities.forEach(e -> {
-            Wishlist wishlist = new Wishlist();
-            BeanUtils.copyProperties(e, wishlist);
-            products.add(wishlist);
+        Wishlist wishList = new Wishlist();
+
+        List<Product> productList = new ArrayList<>();
+
+        entities.getProducts().forEach(e -> {
+            Product product = new Product();
+            BeanUtils.copyProperties(e, product);
+            productList.add(product);
+
         });
-        return products;
+        wishList.setCustomerId(entities.getCustomerId());
+        wishList.setProducts(productList);
+
+        return wishList;
     }
 
-    public Wishlist findProductById(String id) {
-        Optional<WishlistEntity> entity = Optional.ofNullable(repository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException("Product not found with ID: " + id)));
+    public NewProduct findProductById(Long customerId, Long productId) {
+        WishlistEntity entity = repository.findByCustomerId(customerId);
 
-        Wishlist wishlist = new Wishlist();
-        BeanUtils.copyProperties(entity.get(), wishlist);
+        NewProduct newProduct = new NewProduct();
 
-        return wishlist;
+        if (ObjectUtils.isEmpty(entity)) {
+            throw new ProductNotFoundException("Product not found with customerId: " + customerId);
+        }
+
+        List<Product> products = entity.getProducts().stream().filter(product -> product.getProductId().equals(productId)).toList();
+
+        if (products.isEmpty()) {
+            throw new ProductNotFoundException("Product not found with producerId: " + productId);
+        }
+
+        newProduct.setCustomerId(entity.getCustomerId());
+        newProduct.setProduct(products.get(0));
+
+
+        return newProduct;
     }
 
 

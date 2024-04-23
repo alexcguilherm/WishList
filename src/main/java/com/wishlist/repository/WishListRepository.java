@@ -15,7 +15,5 @@ import java.util.Optional;
 @EnableJpaRepositories
 public interface WishlistRepository extends CrudRepository<WishlistEntity, String> {
 
-    WishlistEntity findByCustomerIdAndProductId(Long customerId, Long productId);
-
-    List<WishlistEntity> findByCustomerId(Long customerId);
+    WishlistEntity findByCustomerId(Long customerId);
 }

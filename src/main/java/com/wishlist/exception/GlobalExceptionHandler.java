@@ -25,4 +25,10 @@ public class GlobalExceptionHandler {
     }
 
 
+    @ExceptionHandler(NoContentException.class)
+    public ResponseEntity<String> handleNoContentExceptionException(NoContentException ex) {
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(ex.getMessage());
+    }
+
+
 }
