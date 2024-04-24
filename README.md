@@ -23,6 +23,17 @@ Se você não estiver logado ou o Docker não estiver em execução, você pode 
 docker login
 ```
 
+## ⚠️ Atenção
+
+Se você tiver alguma cloud sincronizada, é recomendado desativar o sincronismo antes de clonar o repositório para evitar possíveis duplicações de arquivos ao abrir o projeto na sua IDE.
+
+Se, mesmo assim, você encontrar arquivos duplicados ou outros problemas após clonar o repositório, siga estas etapas:
+
+1. Desativar a Sincronização: Se você suspeitar que a sincronização com a nuvem está causando o problema, desative-a temporariamente.
+2. Limpar o Cache da IDE: Limpe o cache da sua IDE para garantir que não haja problemas de cache causando a exibição de arquivos duplicados. Você pode fazer isso acessando o menu File > Invalidate Caches / Restart... e selecionando Invalidate and Restart.
+3. Reverificar a Estrutura do Projeto: Verifique se a estrutura do projeto está correta e se não há diretórios ou arquivos duplicados.
+4. Verificar o Repositório Remoto: Certifique-se de que o repositório remoto está configurado corretamente e que não há problemas de sincronização ou conflitos.
+5. Buscar Ajuda Adicional: Se o problema persistir após seguir essas etapas, busque ajuda adicional na documentação da sua IDE, fóruns de suporte ou entre em contato com a equipe responsável pelo projeto.
 ## Configuração
 
 Siga estas etapas para configurar a aplicação:
