@@ -18,7 +18,7 @@ import org.springframework.util.ObjectUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+
 
 
 @Service
@@ -45,9 +45,8 @@ public class WishlistService {
 
                 validateAlreadyExists(newProduct, products);
 
-                entity.getProducts().add(newProduct.getProduct());
-
             }
+            entity.getProducts().add(newProduct.getProduct());
         }
 
         repository.save(entity);
@@ -115,6 +114,10 @@ public class WishlistService {
         NewProduct newProduct = new NewProduct();
 
         if (ObjectUtils.isEmpty(entity)) {
+            throw new ProductNotFoundException("Product not found with customerId: " + customerId);
+        }
+
+        if(ObjectUtils.isEmpty(entity.getProducts())) {
             throw new ProductNotFoundException("Product not found with customerId: " + customerId);
         }
 
