@@ -149,30 +149,6 @@ Exclui um item da lista de desejos.
 
 
 
-
-
-
-# Produtos para Cadastro
-```json
-{
-  "customerId": 123,
-  "product": {
-    "productId": 456,
-    "name": "Nome do Produto",
-    "description": "Descrição do Produto",
-    "price": 99.99,
-    "brand": "Marca",
-    "model": "Modelo",
-    "available": true,
-    "rating": 4.5
-  }
-}
-
-
-
-
-
-
 # Produtos para Cadastro
 
 ```json
