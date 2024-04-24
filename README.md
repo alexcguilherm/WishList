@@ -149,8 +149,11 @@ Exclui um item da lista de desejos.
 
 
 
-# Produtos para Cadastro
 
+
+
+# Produtos para Cadastro
+1. **Headphones Sony**
 ```json
 {
   "productId": 1,
@@ -163,7 +166,9 @@ Exclui um item da lista de desejos.
   "rating": 4.9
 }
 
+```
 2. **Samsung Galaxy S21**
+```json
    {
    "productId": 2,
    "name": "Samsung Galaxy S21",
@@ -174,8 +179,9 @@ Exclui um item da lista de desejos.
    "available": true,
    "rating": 4.7
    }
-
+```
 3. **Sony PlayStation 5**
+```json   
    {
    "productId": 3,
    "name": "Sony PlayStation 5",
@@ -186,8 +192,9 @@ Exclui um item da lista de desejos.
    "available": true,
    "rating": 4.9
    }
-
+```
 4. **Dell XPS 13 Laptop**
+```json   
    {
    "productId": 4,
    "name": "Dell XPS 13 Laptop",
@@ -198,8 +205,9 @@ Exclui um item da lista de desejos.
    "available": true,
    "rating": 4.6
    }
-
+```
 5. **LG OLED C1 4K TV**
+```json   
    {
    "productId": 5,
    "name": "LG OLED C1 4K TV",
@@ -210,8 +218,9 @@ Exclui um item da lista de desejos.
    "available": true,
    "rating": 4.9
    }
-
+```
 6. **Nike Air Zoom Pegasus 38 Running Shoes**
+```json
    {
    "productId": 6,
    "name": "Nike Air Zoom Pegasus 38 Running Shoes",
@@ -222,8 +231,9 @@ Exclui um item da lista de desejos.
    "available": true,
    "rating": 4.8
    }
-
+```
 7. **Amazon Echo Dot (4th Gen) Smart Speaker**
+```json
    {
    "productId": 7,
    "name": "Amazon Echo Dot (4th Gen) Smart Speaker",
@@ -234,8 +244,9 @@ Exclui um item da lista de desejos.
    "available": true,
    "rating": 4.7
    }
-
+```
 8. **GoPro HERO9 Black Action Camera**
+```json
    {
    "productId": 8,
    "name": "GoPro HERO9 Black Action Camera",
@@ -246,8 +257,9 @@ Exclui um item da lista de desejos.
    "available": true,
    "rating": 4.8
    }
-
+```
 9. **Apple MacBook Pro (M1, 2020)**
+```json
    {
    "productId": 9,
    "name": "Apple MacBook Pro (M1, 2020)",
@@ -258,8 +270,9 @@ Exclui um item da lista de desejos.
    "available": true,
    "rating": 4.9
    }
-
+```
 10. **Sony WH-1000XM4 Wireless Noise-Canceling Headphones**
+```json
     {
     "productId": 10,
     "name": "Sony WH-1000XM4 Wireless Noise-Canceling Headphones",
@@ -270,8 +283,9 @@ Exclui um item da lista de desejos.
     "available": true,
     "rating": 4.9
     }
-
+```
 11. **Canon EOS R5 Mirrorless Camera**
+```json
     {
     "productId": 11,
     "name": "Canon EOS R5 Mirrorless Camera",
@@ -282,8 +296,9 @@ Exclui um item da lista de desejos.
     "available": true,
     "rating": 4.8
     }
-
+```
 12. **Microsoft Xbox Series X Gaming Console**
+```json
     {
     "productId": 12,
     "name": "Microsoft Xbox Series X Gaming Console",
@@ -294,8 +309,9 @@ Exclui um item da lista de desejos.
     "available": true,
     "rating": 4.7
     }
-
+```
 13. **Samsung QN90A Neo QLED 4K TV**
+```json
     {
     "productId": 13,
     "name": "Samsung QN90A Neo QLED 4K TV",
@@ -306,8 +322,9 @@ Exclui um item da lista de desejos.
     "available": true,
     "rating": 4.9
     }
-
+```
 14. **Google Pixel 6 Pro Smartphone**
+```json
     {
     "productId": 14,
     "name": "Google Pixel 6 Pro Smartphone",
@@ -318,8 +335,9 @@ Exclui um item da lista de desejos.
     "available": true,
     "rating": 4.7
     }
-
+```
 15. **Bose QuietComfort 45 Wireless Headphones**
+```json
     {
     "productId": 15,
     "name": "Bose QuietComfort 45 Wireless Headphones",
@@ -330,8 +348,9 @@ Exclui um item da lista de desejos.
     "available": true,
     "rating": 4.8
     }
-
+```
 16. **Microsoft Surface Laptop 4**
+```json
     {
     "productId": 16,
     "name": "Microsoft Surface Laptop 4",
@@ -342,8 +361,9 @@ Exclui um item da lista de desejos.
     "available": true,
     "rating": 4.6
     }
-
+```
 17. **LG CX OLED 4K TV**
+```json
     {
     "productId": 17,
     "name": "LG CX OLED 4K TV",
@@ -354,8 +374,9 @@ Exclui um item da lista de desejos.
     "available": true,
     "rating": 4.9
     }
-
+```
 18. **Lenovo ThinkPad X1 Carbon Gen 9**
+```json
     {
     "productId": 18,
     "name": "Lenovo ThinkPad X1 Carbon Gen 9",
@@ -366,8 +387,9 @@ Exclui um item da lista de desejos.
     "available": true,
     "rating": 4.7
     }
-
+```
 19. **Canon EOS Rebel T8i DSLR Camera**
+```json
     {
     "productId": 19,
     "name": "Canon EOS Rebel T8i DSLR Camera",
@@ -378,8 +400,9 @@ Exclui um item da lista de desejos.
     "available": true,
     "rating": 4.8
     }
-
+```
 20. **Fitbit Charge 5 Fitness Tracker**
+```json
     {
     "productId": 20,
     "name": "Fitbit Charge 5 Fitness Tracker",
@@ -390,4 +413,4 @@ Exclui um item da lista de desejos.
     "available": true,
     "rating": 4.7
     }
-
+```
