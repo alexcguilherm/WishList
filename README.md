@@ -1,2 +1,4 @@
 # WishList
 Wishlist project
+
+Requisitos
