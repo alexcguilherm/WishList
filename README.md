@@ -95,7 +95,7 @@ Adiciona um item à lista de desejos.
     "rating": 4.5
   }
 
-
+```
 
 ## Encontrar Produto por ID na Wishlist
 
