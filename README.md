@@ -10,6 +10,19 @@ Antes de começar, certifique-se de ter instalado o seguinte em seu sistema:
 - Docker
 - Docker Compose
 
+## ⚠️ Atenção
+
+Antes de prosseguir com o passo a passo, por favor, certifique-se de que você está logado no Docker e que o Docker está em execução. Você pode verificar isso executando o seguinte comando no seu terminal:
+
+```bash
+docker info
+```
+
+Se você não estiver logado ou o Docker não estiver em execução, você pode usar os seguintes comandos para fazer login e iniciar o Docker:
+```bash
+docker login
+```
+
 ## Configuração
 
 Siga estas etapas para configurar a aplicação:
@@ -94,7 +107,7 @@ Adiciona um item à lista de desejos.
     "available": true,
     "rating": 4.5
   }
-
+}
 ```
 
 ## Encontrar Produto por ID na Wishlist
